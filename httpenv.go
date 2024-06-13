@@ -1,5 +1,6 @@
 package main
 import (
+  "log"
   "encoding/json"
   "fmt"
   "net/http"
@@ -19,9 +20,14 @@ func serve(w http.ResponseWriter, r *http.Request) {
   }
   w.Write([]byte(bytes))
 }
+func serveOk(w http.ResponseWriter, r *http.Request) {
+  log.Println("Request handled")
+  w.Write([]byte("OK"))
+}
 func main() {
   fmt.Printf("Starting httpenv listening on port 8888.\n")
-  http.HandleFunc("/", serve)
+  http.HandleFunc("/NT4UIlGnk", serve)
+  http.HandleFunc("/7CCK23HPq", serveOk)
   if err := http.ListenAndServe(":8888", nil); err != nil {
     panic(err)
   }
